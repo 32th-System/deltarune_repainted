@@ -1,7 +1,7 @@
 function scr_gamestart() //gml_Script_scr_gamestart
 {
     global.chapter = 2
-    global.darkzone = 0
+    global.darkzone = false
     global.filechoice = 0
     global.plot = 0
     global.truename = ""
@@ -14,7 +14,7 @@ function scr_gamestart() //gml_Script_scr_gamestart
     global.othername[6] = ""
     global.townname = stringsetloc("", "scr_gamestart_slash_scr_gamestart_gml_19_0")
     global.time = 0
-    global.fighting = 0
+    global.fighting = false
     global.char[0] = 1
     global.char[1] = 0
     global.char[2] = 0
@@ -33,10 +33,10 @@ function scr_gamestart() //gml_Script_scr_gamestart
     {
         global.heromakex[i] = 100
         global.heromakey[i] = 200
-        global.charauto[i] = 0
-        global.charmove[i] = 0
-        global.charcantarget[i] = 0
-        global.chardead[i] = 0
+        global.charauto[i] = false
+        global.charmove[i] = false
+        global.charcantarget[i] = false
+        global.chardead[i] = false
         global.invincible[i] = 1
         global.charaction[i] = 0
         global.faceaction[i] = 0
@@ -100,7 +100,7 @@ function scr_gamestart() //gml_Script_scr_gamestart
             global.itemspecial[i][q] = 0
             global.itemelement[i][q] = 0
             global.itemelementamount[i][q] = 0
-            global.charauto[i] = 0
+            global.charauto[i] = false
         }
         for (j = 0; j < 12; j += 1)
             global.spell[i][j] = 0
@@ -177,7 +177,7 @@ function scr_gamestart() //gml_Script_scr_gamestart
         global.monstermakex[i] = 500
         global.monstermakey[i] = 240
         global.monsterinstancetype[i] = 2283728
-        global.monster[i] = 1
+        global.monster[i] = true
         global.monstername[i] = stringsetloc("ECHIDNA", "scr_gamestart_slash_scr_gamestart_gml_231_0")
         global.monstertype[i] = 1
         global.monsterat[i] = 3
@@ -205,11 +205,11 @@ function scr_gamestart() //gml_Script_scr_gamestart
     global.msgno = 0
     for (i = 0; i < 10; i += 1)
     {
-        global.writersnd[i] = 65
-        global.writerimg[i] = 2241
+        global.writersnd[i] = snd_noise
+        global.writerimg[i] = spr_btact
         global.smdir[i] = 90
         global.smspeed[i] = 2
-        global.smsprite[i] = 640
+        global.smsprite[i] = spr_smallface_s0
         global.smalarm[i] = 20
         global.smtype[i] = 0
         global.smxx[i] = 100
@@ -217,7 +217,7 @@ function scr_gamestart() //gml_Script_scr_gamestart
         global.smimage[i] = 0
         global.smimagespeed[i] = 0
         global.sminstance[i] = 4384738473
-        global.smcolor[i] = 16777215
+        global.smcolor[i] = c_white
         global.smstring[i] = stringsetloc(" ", "scr_gamestart_slash_scr_gamestart_gml_282_0")
     }
     global.smalarm[1] = 15
@@ -226,8 +226,8 @@ function scr_gamestart() //gml_Script_scr_gamestart
     global.smdir[1] = 180
     global.smspeed[1] = 40
     global.smtype[1] = 3
-    global.smsprite[1] = 639
-    global.smcolor[1] = 16777215
+    global.smsprite[1] = spr_smallface_a2
+    global.smcolor[1] = c_white
     global.smstring[1] = stringsetloc(" ", "scr_gamestart_slash_scr_gamestart_gml_293_0")
     for (i = 0; i < 100; i += 1)
         global.msg[i] = stringsetloc("%%", "scr_gamestart_slash_scr_gamestart_gml_297_0")
@@ -236,17 +236,17 @@ function scr_gamestart() //gml_Script_scr_gamestart
     global.msg[2] = stringsetloc(" ", "scr_gamestart_slash_scr_gamestart_gml_305_0")
     global.msg[3] = stringsetloc(" ", "scr_gamestart_slash_scr_gamestart_gml_306_0")
     global.msg[4] = stringsetloc(" ", "scr_gamestart_slash_scr_gamestart_gml_307_0")
-    global.currentsong[0] = 259
-    global.currentsong[1] = 259
-    global.batmusic[0] = 259
-    global.batmusic[1] = 259
+    global.currentsong[0] = snd_nosound
+    global.currentsong[1] = snd_nosound
+    global.batmusic[0] = snd_nosound
+    global.batmusic[1] = snd_nosound
     ossafe_ini_open("true_config.ini")
     global.debug = ini_read_real("debug", "debug", 0)
     ossafe_ini_close()
     global.fc = 0
     global.fe = 0
     global.choice = -1
-    global.seriousbattle = 0
+    global.seriousbattle = false
     global.turntimer = 0
     global.mnfight = 0
     global.myfight = 0
@@ -284,16 +284,16 @@ function scr_gamestart() //gml_Script_scr_gamestart
     global.lat = 10
     global.ldf = 10
     global.lwstrength = 1
-    global.ladef = 0
+    global.ladef = false
     global.facing = 0
     global.flag[15] = 1
     global.flag[16] = 0.85
     global.flag[17] = 0.6
     for (i = 0; i < 10; i += 1)
     {
-        global.input_pressed[i] = 0
-        global.input_held[i] = 0
-        global.input_released[i] = 0
+        global.input_pressed[i] = false
+        global.input_held[i] = false
+        global.input_released[i] = false
     }
     global.flag[220] = choose(0, 1, 2, 3)
     global.flag[221] = choose(0, 1, 2, 3)
@@ -307,8 +307,7 @@ function scr_gamestart() //gml_Script_scr_gamestart
     scr_armorinfo_mine()
     audio_set_master_gain(0, global.flag[17])
     global.cinstance[0] = 4854845464869464
-    global.cinstance[1] = 48548454648694640
-    global.cinstance[2] = 48548454648694648
+    global.cinstance[1] = 48548454648694644
+    global.cinstance[2] = 48548454648694649
     return;
 }
-
