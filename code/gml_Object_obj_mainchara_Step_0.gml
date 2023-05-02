@@ -210,23 +210,27 @@ if (global.interact == 0)
     xmeet = 0
     ymeet = 0
     xymeet = 0
-    if place_meeting((x + px), (y + py), obj_solidblock)
+    x_ = x
+    if global.darkzone
+        x_ += 4
+    y_ = (y + 2)
+    if place_meeting((x_ + px), (y_ + py), obj_solidblock)
         xymeet = 1
-    if place_meeting((x + px), y, obj_solidblock)
+    if place_meeting((x_ + px), y_, obj_solidblock)
     {
-        if place_meeting((x + px), y, obj_solidblock)
+        if place_meeting((x_ + px), y_, obj_solidblock)
         {
             g = wspeed
             while (g > 0)
             {
                 mvd = 0
-                if (press_d == 0 && (!(place_meeting((x + px), (y - g), obj_solidblock))))
+                if (press_d == 0 && (!(place_meeting((x_ + px), (y_ - g), obj_solidblock))))
                 {
                     y -= g
                     py = 0
                     break
                 }
-                else if (press_u == 0 && mvd == 0 && (!(place_meeting((x + px), (y + g), obj_solidblock))))
+                else if (press_u == 0 && mvd == 0 && (!(place_meeting((x_ + px), (y_ + g), obj_solidblock))))
                 {
                     y += g
                     py = 0
@@ -238,6 +242,7 @@ if (global.interact == 0)
                     continue
                 }
             }
+            y_ = (y + 2)
         }
         xmeet = 1
         bkx = 0
@@ -246,7 +251,7 @@ if (global.interact == 0)
             i = px
             while (i >= 0)
             {
-                if (!(place_meeting((x + i), y, obj_solidblock)))
+                if (!(place_meeting((x_ + i), y_, obj_solidblock)))
                 {
                     px = i
                     bkx = 1
@@ -264,7 +269,7 @@ if (global.interact == 0)
             i = px
             while (i <= 0)
             {
-                if (!(place_meeting((x + i), y, obj_solidblock)))
+                if (!(place_meeting((x_ + i), y_, obj_solidblock)))
                 {
                     px = i
                     bkx = 1
@@ -280,23 +285,23 @@ if (global.interact == 0)
         if (bkx == 0)
             px = 0
     }
-    if place_meeting(x, (y + py), obj_solidblock)
+    if place_meeting(x_, (y_ + py), obj_solidblock)
     {
         ymeet = 1
         bky = 0
-        if place_meeting(x, (y + py), obj_solidblock)
+        if place_meeting(x_, (y_ + py), obj_solidblock)
         {
             g = wspeed
             while (g > 0)
             {
                 mvd = 0
-                if (press_r == 0 && (!(place_meeting((x - g), (y + py), obj_solidblock))))
+                if (press_r == 0 && (!(place_meeting((x_ - g), (y_ + py), obj_solidblock))))
                 {
                     x -= g
                     px = 0
                     break
                 }
-                else if (mvd == 0 && press_l == 0 && (!(place_meeting((x + g), (y + py), obj_solidblock))))
+                else if (mvd == 0 && press_l == 0 && (!(place_meeting((x_ + g), (y_ + py), obj_solidblock))))
                 {
                     x += g
                     px = 0
@@ -308,13 +313,16 @@ if (global.interact == 0)
                     continue
                 }
             }
+            x_ = x
+            if global.darkzone
+                x_ += 4
         }
         if (py > 0)
         {
             i = py
             while (i >= 0)
             {
-                if (!(place_meeting(x, (y + i), obj_solidblock)))
+                if (!(place_meeting(x_, (y_ + i), obj_solidblock)))
                 {
                     py = i
                     bky = 1
@@ -332,7 +340,7 @@ if (global.interact == 0)
             i = py
             while (i <= 0)
             {
-                if (!(place_meeting(x, (y + i), obj_solidblock)))
+                if (!(place_meeting(x_, (y_ + i), obj_solidblock)))
                 {
                     py = i
                     bky = 1
@@ -348,7 +356,7 @@ if (global.interact == 0)
         if (bky == 0)
             py = 0
     }
-    if place_meeting((x + px), (y + py), obj_solidblock)
+    if place_meeting((x_ + px), (y_ + py), obj_solidblock)
     {
         xymeet = 1
         bkxy = 0
@@ -356,7 +364,7 @@ if (global.interact == 0)
         j = py
         while (j != 0 || i != 0)
         {
-            if (!(place_meeting((x + i), (y + j), obj_solidblock)))
+            if (!(place_meeting((x_ + i), (y_ + j), obj_solidblock)))
             {
                 px = i
                 py = j
@@ -382,7 +390,6 @@ if (global.interact == 0)
                 }
                 else
                     i = 0
-                continue
             }
         }
         if (bkxy == 0)
