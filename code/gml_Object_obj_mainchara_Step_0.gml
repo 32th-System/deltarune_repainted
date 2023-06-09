@@ -369,6 +369,7 @@ if (global.interact == 0)
                 px = i
                 py = j
                 bkxy = 1
+                break
             }
             else
             {
