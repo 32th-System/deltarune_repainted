@@ -30,3 +30,9 @@ This is just a parameter dump of all the things that need to be set in Undertale
 - spr_krisr_heart
 - spr_krisu_heart
 - spr_krisd_slide_heart
+
+### Nubert
+- Origin X: 6
+
+#### Sprites affected:
+- spr_npc_nubert_screen
