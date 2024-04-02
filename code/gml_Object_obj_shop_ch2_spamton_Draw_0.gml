@@ -6,7 +6,11 @@ if scr_debug()
             global.fe = i
     }
 }
+if (global.fe == 9)
+    shader_set(shd_grayscale)
 draw_sprite_ext(spr_shop_spamton_bg, 0, 0, 0, 2, 2, 0, c_white, 1)
+if (global.fe == 9)
+    shader_reset()
 if (greybg == 1)
 {
 }
@@ -37,14 +41,22 @@ else
         glitchtimer2 = 0
     draw_set_color(c_black)
     draw_rectangle(520, 0, 540, 240, false)
+    if (global.fe == 9)
+        shader_set(shd_grayscale)
     for (j = 0; j < 3; j++)
     {
         draw_sprite_part_ext(spr_shop_spamton_bg, 0, randoml2[j], randomt2[j], 8, 16, (j * 16), 0, 2, 2, c_white, 1)
         for (i = 0; i < 4; i++)
             draw_sprite_part_ext(spr_shop_spamton_bg, 0, (240 + randoml[i]), (40 * j), (2 + randomw[i]), 40, ((480 + randomx[i]) + (sin(((siner / 10) + j)) * 3)), (j * 80), 2, 2, c_white, 1)
     }
+    if (global.fe == 9)
+        shader_reset()
 }
+if (global.fe == 9)
+    shader_set(shd_grayscale)
 draw_sprite_ext(spr_shop_soamton_phone, phoneindex, 556, 114, 2, 2, 0, c_white, 1)
+if (global.fe == 9)
+    shader_reset()
 trackpos = audio_sound_get_track_position(global.currentsong[1])
 if (phoneringing == 0)
 {
@@ -108,7 +120,11 @@ if (global.fe == 8)
     draw_sprite_ext(spr_shop_spamton4, 0, (200 + spamtonx), 0, 2, 2, 0, c_white, spamtonalpha)
 }
 if (global.fe == 9)
-    draw_sprite_ext(spr_shop_spamton1, 0, (200 + spamtonx), 0, 2, 2, 0, make_color_hsv(((siner * 8) % 255), (60 + (sin((siner / 10)) * 15)), 255), spamtonalpha)
+{
+    shader_set(shd_grayscale)
+    draw_sprite_ext(spr_shop_spamton1, 0, (200 + spamtonx), 0, 2, 2, 0, c_white, spamtonalpha)
+    shader_reset()
+}
 if (global.fe == 0)
 {
     if pause_music
