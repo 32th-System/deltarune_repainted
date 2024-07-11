@@ -116,7 +116,7 @@ if (global.fe == 7)
     draw_sprite_ext(spr_shop_spamton3, 0, ((200 + spamtonx) + vibratex), vibratey, 2, 2, 0, c_white, spamtonalpha)
 if (global.fe == 8)
 {
-    draw_sprite_part_ext(spr_shop_spamton4, 1, (siner % 50), ((-siner) % 30), 58, 60, (spamtonx + 260), 12, 2, 2, merge_color(c_white, c_black, (abs(cos((siner / 62))) * 0.8)), spamtonalpha)
+     draw_sprite_part_ext(spr_shop_spamton4, 1, (siner % 20), ((-siner) % 20), 55, 60, (spamtonx + 285), 35, 1.835, 2, merge_color(c_white, c_black, ((abs(cos(siner / 62))) * 0.8)), spamtonalpha)
     draw_sprite_ext(spr_shop_spamton4, 0, (200 + spamtonx), 0, 2, 2, 0, c_white, spamtonalpha)
 }
 if (global.fe == 9)
