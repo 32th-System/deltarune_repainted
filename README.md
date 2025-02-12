@@ -3,7 +3,14 @@ This is just a parameter dump of all the things that need to be set in Undertale
 
 ## Castle town Castle
 
-In room_dw_castle_area_2_transformed, you will need to make a new asset layer with a depth of 500401. On that layer, place bg_darkcastle_transformed, and put it at position (408, -40)
+### room_dw_castle_area_2_transformed
+- Make a new asset layer with a depth of 500401. On that layer, place bg_darkcastle_transformed, and put it at position (408, -40)
+
+### room_dw_castle_dungeon
+- Create asset layer with depth 500199. All sprites on this layer will have a scale of (2, 2)
+- Place spr_hamsterwheel with scale at (960, -40).
+- Place spr_hamsterbottle at (1454, 0)
+
 
 ## Sprite origins and margins
 
