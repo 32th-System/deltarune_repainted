@@ -11,6 +11,9 @@ This is just a parameter dump of all the things that need to be set in Undertale
 - Place spr_hamsterwheel with scale at (960, -40).
 - Place spr_hamsterbottle at (1454, 0)
 
+### room_dw_ralsei_castle_1f
+- Delete layer TILES
+- Create Background layer with depth 1000000, copy properties of background layer from room_krisroom, set sprite to room_dw_ralsei_castle_1f_bg
 
 ## Sprite origins and margins
 
